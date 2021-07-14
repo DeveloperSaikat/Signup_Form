@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 function SignUp(){
-
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('')
     const [username, setUsername] = useState('');
     const [validUsername, setValidUsername] = useState(false);
     const [password, setPassword] = useState('');
@@ -23,6 +24,14 @@ function SignUp(){
 
     function usernameHandler(event){
         setUsername(event.target.value);
+    }
+
+    function firstnameHandler(event){
+        setFirstName(event.target.value);
+    }
+
+    function lastnameHandler(event){
+        setLastName(event.target.value);
     }
 
     function passwordHandler(event){
@@ -49,6 +58,10 @@ function SignUp(){
         if(formIsValid){
             alert("Signup successful");
             setFormIsValid(false);
+            setFirstName('');
+            setLastName('');
+            setUsername('');
+            setPassword('');
         }
         else if(!validUsername){
             alert("Username not available");
@@ -62,13 +75,13 @@ function SignUp(){
 
     return (<form onSubmit={signUpHandler}> 
         <p>First Name</p>
-        <input type="text" id="firstname" required/>
+        <input type="text" id="firstname" value={firstName} onChange={firstnameHandler} required/>
         <p>Last Name</p>
-        <input type="text" id="lastname" required/>
+        <input type="text" id="lastname" value={lastName} onChange={lastnameHandler} required/>
         <p>User name</p>
-        <input type="text" id="uername" onChange={usernameHandler} required/>
+        <input type="text" value={username} id="uername" onChange={usernameHandler} required/>
         <p>Password</p>
-        <input type="password" id="password" onChange={passwordHandler} required/>
+        <input type="password" value={password} id="password" onChange={passwordHandler} required/>
         <br></br>
         <button type="submit">Sign Up</button>
     </form>)
