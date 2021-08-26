@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Form, Button, Card } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
+import classes from './SignUp.module.css';
 
 function SignUp(){
     const [firstName, setFirstName] = useState('');
@@ -73,18 +77,57 @@ function SignUp(){
 
 
 
-    return (<form onSubmit={signUpHandler}> 
-        <p>First Name</p>
-        <input type="text" id="firstname" value={firstName} onChange={firstnameHandler} required/>
-        <p>Last Name</p>
-        <input type="text" id="lastname" value={lastName} onChange={lastnameHandler} required/>
-        <p>User name</p>
-        <input type="text" value={username} id="uername" onChange={usernameHandler} required/>
-        <p>Password</p>
-        <input type="password" value={password} id="password" onChange={passwordHandler} required/>
-        <br></br>
-        <button type="submit">Sign Up</button>
-    </form>)
+    // return (<form onSubmit={signUpHandler}> 
+    //     <p>First Name</p>
+    //     <input type="text" id="firstname" value={firstName} onChange={firstnameHandler} required/>
+    //     <p>Last Name</p>
+    //     <input type="text" id="lastname" value={lastName} onChange={lastnameHandler} required/>
+    //     <p>User name</p>
+    //     <input type="text" value={username} id="uername" onChange={usernameHandler} required/>
+    //     <p>Password</p>
+    //     <input type="password" value={password} id="password" onChange={passwordHandler} required/>
+    //     <br></br>
+    //     <button type="submit">Sign Up</button>
+    // </form>)
+
+    return (
+            <Card className={classes.formCard}>
+                <Card.Body>
+                    <h3 className={classes.formHeader}>SignUp Form</h3>
+                    <Form onSubmit={signUpHandler}>
+                    <Row>
+                        <Col>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label className={classes.labelLeft}>First Name</Form.Label>
+                                <Form.Control type="text" placeholder="Enter firstname" id="firstname" value={firstName} onChange={firstnameHandler} required/>
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label className={classes.labelLeft}>Last Name</Form.Label>
+                                <Form.Control type="text" placeholder="Enter lastname" id="lastname" value={lastName} onChange={lastnameHandler} required/>
+                            </Form.Group>
+                        </Col>                        
+                    </Row>
+                
+
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label className={classes.labelLeft}>Username</Form.Label>
+                        <Form.Control type="text" placeholder="Enter username" value={username} id="uername" onChange={usernameHandler} required/>
+                    </Form.Group>
+            
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label className={classes.labelLeft}>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Enter your Password" value={password} id="password" onChange={passwordHandler} required/>
+                    </Form.Group>
+                
+                    <Button variant="primary" type="submit" className={classes.labelLeft}>
+                    Submit
+                    </Button>
+            </Form></Card.Body>
+            </Card>
+    
+            )
 
 }
 

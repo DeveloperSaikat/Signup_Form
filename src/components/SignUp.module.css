@@ -1,0 +1,22 @@
+.formCard{
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    border: 1px solid black;
+    box-shadow: 2px 5px;
+    background-color: rgb(201, 251, 204);
+}
+
+.labelLeft{
+    float: left;
+    font-weight: bold;
+}
+
+.formHeader{
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+
+.inputElements{
+    border: 0.5px solid black;
+}
